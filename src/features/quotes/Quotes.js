@@ -3,9 +3,7 @@ import { useSelector } from "react-redux";
 import QuoteCard from "./QuoteCard";
 
 function Quotes() {
-
   const quotes = useSelector((state) => state.quotes)
-  console.log(quotes)
 
   return (
     <div>
@@ -17,9 +15,9 @@ function Quotes() {
       <div className="container">
         <div className="row">
           <div className="col-md-4">
-            {quotes.map((quote) => {
+            {quotes.map((quote) => (
               <QuoteCard key={quote.id} quote={quote} />
-            })}
+            ))}
           </div>
         </div>
       </div>

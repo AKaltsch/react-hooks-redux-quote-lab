@@ -1,23 +1,20 @@
 import React from "react";
-import {useDispatch} from "react-redux";
-import { upvoteQuote, downvoteQuote, removeQuote} from "./quotesSlice";
-
+import { useDispatch } from "react-redux";
+import { downvoteQuote, removeQuote, upvoteQuote } from "./quotesSlice";
 
 function QuoteCard({ quote }) {
-  console.log(quote)
-
   const dispatch = useDispatch();
 
   function handleUpvoteClick() {
-    dispatch(upvoteQuote(quote.id))
+    dispatch(upvoteQuote(quote.id));
   }
 
   function handleDownvoteClick() {
-    dispatch(downvoteQuote(quote.id))
+    dispatch(downvoteQuote(quote.id));
   }
 
-  function handleRemoveQuote() {
-    dispatch(removeQuote(quote.id))
+  function handleDeleteClick() {
+    dispatch(removeQuote(quote.id));
   }
 
   return (
@@ -27,8 +24,7 @@ function QuoteCard({ quote }) {
           <blockquote className="card-blockquote">
             <p>{quote.content}</p>
             <footer>
-              - author{" "}
-              <cite title="Source Title">{quote.author}</cite>
+              - author <cite title="Source Title">{quote.author}</cite>
             </footer>
           </blockquote>
         </div>
@@ -38,13 +34,25 @@ function QuoteCard({ quote }) {
             role="group"
             aria-label="Basic example"
           >
-            <button type="button" className="btn btn-primary" onClick={handleUpvoteClick}>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={handleUpvoteClick}
+            >
               Upvote
             </button>
-            <button type="button" className="btn btn-secondary" onClick={handleDownvoteClick}>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={handleDownvoteClick}
+            >
               Downvote
             </button>
-            <button type="button" className="btn btn-danger"onClick={handleRemoveQuote}>
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={handleDeleteClick}
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
